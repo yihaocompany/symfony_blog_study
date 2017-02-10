@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Blog" table="blog">
+    <indexes>
+      <index name="status" columns="status"/>
+      <index name="type" columns="type"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="72" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="status" type="boolean" column="status" nullable="false">
+      <options>
+        <option name="comment">-1 删除 0 草稿 1 正常 2 置顶</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="createtime" type="datetime" column="createtime" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="updatetime" type="datetime" column="updatetime" nullable="false">
+      <options>
+        <option name="default">0000-00-00 00:00:00</option>
+      </options>
+    </field>
+    <field name="type" type="boolean" column="type" nullable="false">
+      <options>
+        <option name="comment">文章类型（分级）</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="look" type="integer" column="look" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">浏览量</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

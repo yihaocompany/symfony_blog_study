@@ -1,0 +1,9 @@
+{% if query is defined and query is not empty %}
+    {% set i=0 %}
+    {% for item in query %}
+        <a href="#" class="{{ color[i] }}">{{ item.name }}</a>
+        {% set i=i+1 %}
+    {% endfor %}
+{% else %}
+  暂无Tags
+{% endif %}
